@@ -21,11 +21,12 @@ td{border:1px solid blue}
 <c:forEach var="menu" items="${mlist }">
 <tr>
 	<td>
-<%-- 	<a href='delete?seqno=${menu.seqno}'>${menu.seqno}</a> --%>
-		<a href='delete/${menu.seqno }'>${menu.seqno}</a>
+<%-- 	<a id=a_del href='delete?seqno=${menu.seqno}'>${menu.seqno}</a> --%>
+		<a id=a_del href='delete/${menu.seqno }'>${menu.seqno}</a>
 	</td>
 	<td>${menu.name }</td>
 	<td>${menu.price }</td>
+	<td><a id=a_view href='view?seqno=${menu.seqno }'>수정</a></td>
 </tr>
 </c:forEach>
 </table>
@@ -34,7 +35,9 @@ td{border:1px solid blue}
 <script>
 $(document)
 .on('click','a',function(){
-	if(!confirm('정말로 삭제하시겠습니까?')) return false;
+	if(this.id=='a_del'){
+		if(!confirm('정말로 삭제하시겠습니까?')) return false;
+	}
 	return true;
 })
 </script>

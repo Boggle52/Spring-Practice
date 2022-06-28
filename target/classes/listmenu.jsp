@@ -13,8 +13,8 @@ td{border:1px solid blue}
 <body>
 <table style='border-collapse:collapse'>
 <c:forEach var="a" items="${mlist }">
-<tr><td>${a.seqno }</td><td>${a.name }</td>
-	<td>${a.price }</td></tr>
+	<tr><td>${a.seqno }</td><td>${a.name }</td>
+		<td>${a.price }</td></tr>
 </c:forEach>
 </table>
 </body>

@@ -102,6 +102,24 @@ public class HomeController {
 		return "redirect:/addnew";
 	}
 	
+	@RequestMapping
+	public String doView(@RequestParam int seqno, Model model) {
+		iMenu menu = sqlSession.getMapper(iMenu.class);
+		menuDTO mDto = menu.viewMenu(seqno);
+		model.addAttribute("mDto",mDto);
+		return "view";
+	}
+	
+	@RequestMapping("/update")
+	public String doUpdate(HttpServletRequest req, Model model) {
+		iMenu menu = sqlSession.getMapper(iMenu.class);
+		String name = req.getParameter("name");
+		int price = Integer.parseInt(req.getParameter("price"));
+		int seqno = Integer.parseInt(req.getParameter("seqno"));
+		menu.updateMenu(name, price, seqno);
+		return "redirect:/addnew";
+	}
+	
 	@RequestMapping(value="/name",method=RequestMethod.GET)
 	public String showMyName(HttpServletRequest request, Model model) {
 		String str1 = request.getParameter("mobile");
